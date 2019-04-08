@@ -6,4 +6,4 @@ class Earth:
         for i in range(self.new_groups):
             x = random(-1000, 1000)
             y = random(-1000, 1000)
-            self.people.append(x, y)
+            self.people.append([x, y])
