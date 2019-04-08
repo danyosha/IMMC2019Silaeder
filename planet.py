@@ -1,16 +1,14 @@
 import pygame
-class Water(object):
+class Istota(object):
     def __init__(self, x, y):
         self.x = x
         self.y = y
-class Land(object):
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
-class People(object):
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
+class Water(Istota):
+    pass
+class Land(Istota):
+    pass
+class People(Istota):
+    pass
 class Planet(object):
     def __init__(self):
         self.water = []
