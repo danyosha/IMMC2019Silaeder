@@ -43,17 +43,21 @@ def main():
                 elif (event.key == pygame.K_p):
                     color = red
                 elif (event.key == pygame.K_u):
-                    print(planet.people)
+                    old = planet.people
                     planet.update()
-                    print(planet.people)
+                    for i in range(len(old), len(planet.people)):
+                        print(planet.people[i].x, planet.people[i].y)
+                        print((planet.people[i].x * sSize, planet.people[i].y * sSize, sSize, sSize))
+                        pygame.draw.rect(screen, red, (planet.people[i].x * sSize, planet.people[i].y * sSize, sSize, sSize))
+
             if pygame.mouse.get_pressed() == (1, 0, 0):
                 (x, y) = pygame.mouse.get_pos()
                 draw = True
                 pygame.draw.rect(screen, color, (x - x % sSize, y - y % sSize, sSize, sSize))
                 if (color == blue):
-                    planet.add(Water(x / sSize, y/ sSize))
+                    planet.add(Water(x // sSize, y // sSize))
                 else:
-                    planet.add(People(x / sSize, y / sSize))
+                    planet.add(People(x // sSize, y // sSize))
 
 
             if pygame.mouse.get_pressed() == (0, 0, 1):
