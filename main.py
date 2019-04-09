@@ -49,7 +49,7 @@ def main():
                 pygame.draw.rect(screen, green, (x - x % 100, y - y % 100, 100, 100))
 
             if pygame.mouse.get_pressed() == (0, 1, 0):
-                screen.fill(white);
+                screen.fill(white)
 
             if event.type == pygame.MOUSEBUTTONUP:
                 draw = False

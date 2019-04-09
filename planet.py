@@ -1,4 +1,5 @@
 import pygame
+import random
 class Istota(object):
     def __init__(self, x, y):
         self.x = x
@@ -22,5 +23,27 @@ class Planet(object):
             self.land.append(self.land)
         if(type(new_object) == people)
             self.people.append(self.people)
+    def update():
+        self.new_generation = set()
+        for i in range(len(self.people)):
+            self.new_generation.insert(self.people[i])
+            if ([self.people[i][0] + 1, self.people[i][0]] not in set(self.water) and [self.people[i][0] + 1, self.people[i][0]] not in set(self.people)):
+                chance = random.randint(1, 1000)
+                if (chance < 13):
+                    self.new_generation.insert([self.people[i][0] + 1, self.people[i][0]])
+            if ([self.people[i][0] - 1, self.people[i][0]] not in set(self.water) and [self.people[i][0] - 1, self.people[i][0]] not in set(self.people)):
+                chance = random.randint(1, 1000)
+                if (chance < 13):
+                    self.new_generation.insert([self.people[i][0] - 1, self.people[i][0]])
+            if ([self.people[i][0], self.people[i][0] + 1] not in set(self.water) and [self.people[i][0], self.people[i][0] + 1] not in set(self.people)):
+                chance = random.randint(1, 1000)
+                if (chance < 13):
+                    self.new_generation.insert([self.people[i][0], self.people[i][0] + 1])
+            if ([self.people[i][0], self.people[i][0] - 1] not in set(self.water) and [self.people[i][0], self.people[i][0] - 1] not in set(self.people)):
+                chance = random.randint(1, 1000)
+                if (chance < 13):
+                    self.new_generation.insert([self.people[i][0], self.people[i][0] - 1])
+        self.people = list(self.new_generation)
+
         
                     
