@@ -27,22 +27,22 @@ class Planet(object):
         self.new_generation = set()
         for i in range(len(self.people)):
             self.new_generation.insert(self.people[i])
-            if ([self.people[i][0] + 1, self.people[i][0]] not in set(self.water) and [self.people[i][0] + 1, self.people[i][0]] not in set(self.people)):
+            if ([self.people[i].x + 1, self.people[i].y not in set(self.water) and [self.people[i].x + 1, self.people[i].y not in set(self.people)):
                 chance = random.randint(1, 1000)
                 if (chance < 13):
-                    self.new_generation.insert([self.people[i][0] + 1, self.people[i][0]])
-            if ([self.people[i][0] - 1, self.people[i][0]] not in set(self.water) and [self.people[i][0] - 1, self.people[i][0]] not in set(self.people)):
+                    self.new_generation.insert([self.people[i].x + 1, self.people[i].y])
+            if ([self.people[i].x - 1, self.people[i].y] not in set(self.water) and [self.people[i].x - 1, self.people[i].y] not in set(self.people)):
                 chance = random.randint(1, 1000)
                 if (chance < 13):
-                    self.new_generation.insert([self.people[i][0] - 1, self.people[i][0]])
-            if ([self.people[i][0], self.people[i][0] + 1] not in set(self.water) and [self.people[i][0], self.people[i][0] + 1] not in set(self.people)):
+                    self.new_generation.insert([self.people[i].x - 1, self.people[i].y])
+            if ([self.people[i].x, self.people[i].y + 1] not in set(self.water) and [self.people[i].x, self.people[i].y + 1] not in set(self.people)):
                 chance = random.randint(1, 1000)
                 if (chance < 13):
-                    self.new_generation.insert([self.people[i][0], self.people[i][0] + 1])
-            if ([self.people[i][0], self.people[i][0] - 1] not in set(self.water) and [self.people[i][0], self.people[i][0] - 1] not in set(self.people)):
+                    self.new_generation.insert([self.people[i].x, self.people[i].y + 1])
+            if ([self.people[i].x, self.people[i].y - 1] not in set(self.water) and [self.people[i].x, self.people[i].y - 1] not in set(self.people)):
                 chance = random.randint(1, 1000)
                 if (chance < 13):
-                    self.new_generation.insert([self.people[i][0], self.people[i][0] - 1])
+                    self.new_generation.insert([self.people[i].x, self.people[i].y - 1])
         self.people = list(self.new_generation)
 
         
