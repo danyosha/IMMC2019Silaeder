@@ -5,11 +5,12 @@
 
 import pygame
 from pygame.locals import *
-
+from planet import Planet, Water, People
 pygame.init()
 
 
 def main():
+    planet = Planet()
     white = (255, 255, 255)
     black = (0, 0, 0)
     red = (255, 0, 0)
@@ -31,22 +32,34 @@ def main():
     blueX = 0
     userColor = (redX, greenX, blueX)
     pygame.mouse.set_cursor(*pygame.cursors.broken_x)
-
+    sSize = 50
     screen = pygame.display.set_mode((1000, 1000))
-    pygame.display.set_caption("Jpaint")
     screen.fill(green)
     while go == True:
         for event in pygame.event.get():
-
+            if (event.type == pygame.KEYDOWN):
+                if (event.key == pygame.K_w):
+                    color = blue
+                elif (event.key == pygame.K_p):
+                    color = red
+                elif (event.key == pygame.K_u):
+                    print(planet.people)
+                    planet.update()
+                    print(planet.people)
             if pygame.mouse.get_pressed() == (1, 0, 0):
                 (x, y) = pygame.mouse.get_pos()
                 draw = True
-                pygame.draw.rect(screen, blue, (x - x % 100, y - y % 100, 100, 100))
+                pygame.draw.rect(screen, color, (x - x % sSize, y - y % sSize, sSize, sSize))
+                if (color == blue):
+                    planet.add(Water(x / sSize, y/ sSize))
+                else:
+                    planet.add(People(x / sSize, y / sSize))
+
 
             if pygame.mouse.get_pressed() == (0, 0, 1):
                 (x, y) = pygame.mouse.get_pos()
                 erase = True
-                pygame.draw.rect(screen, green, (x - x % 100, y - y % 100, 100, 100))
+                pygame.draw.rect(screen, green, (x - x % sSize, y - y % sSize, sSize, sSize))
 
             if pygame.mouse.get_pressed() == (0, 1, 0):
                 screen.fill(white)
@@ -59,7 +72,7 @@ def main():
                 print(1)
                 if draw:
                     (x, y) = pygame.mouse.get_pos()
-                    pygame.draw.rect(screen, color, (x - x % 100, y - y % 100, 100, 100))
+                    pygame.draw.rect(screen, color, (x - x % sSize, y - y % sSize, sSize, sSize))
 
             pygame.display.flip()
 
